@@ -1,6 +1,8 @@
+import "reflect-metadata";
 import express from 'express'
 import cors from 'cors'
 import Routes from './routes'
+import './database/Connection'
 
 const server = express()
 
