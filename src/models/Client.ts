@@ -1,12 +1,24 @@
-import { EGender } from "../enums/EGender"
+import { Column, Entity, OneToMany, PrimaryColumn } from "typeorm";
 import { v4 as uuid } from "uuid";
+import OrderSales from "./OrderSales";
 
+@Entity()
 class Client {
+    
+    @PrimaryColumn()
     readonly id: string
+    
+    @Column()
     name: string
+
+    @Column()
     cpf: string
+    
+    @Column()
     birthDate: Date
-    gender: EGender
+    
+    @OneToMany(() => OrderSales, orderSales => orderSales.client)
+    orderSales: OrderSales[];
 
     constructor() {
         if (!this.id) {
